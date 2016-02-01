@@ -7,6 +7,6 @@ public class LinkedList {
 	 public Main() {
 	  // TODO Auto-generated constructor stub
 	 }
-
+//asd
 	}
 }
