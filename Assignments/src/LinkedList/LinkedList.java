@@ -25,6 +25,7 @@ class LinkedList implements Interface
 	{
 
 		første = aktuel = null;
+		
 
 	}
 
@@ -130,9 +131,10 @@ class LinkedList implements Interface
 	public boolean tom() // der testes på om listen er tom
 
 	{
-
-		return første == null;
-
+		if (første==null){
+		return true;
+}
+		return false;
 	}
 
 	public boolean sidste() // der testes på om det akt. elt. er det sidste
@@ -153,21 +155,28 @@ class LinkedList implements Interface
 
 	@Override
 	public void push(String e) {
-		// TODO Auto-generated method stub
+		indsætFørste();
+		gemFørste(e);
 		
 	}
+	
 
 	@Override
 	public String pop() {
-		// TODO Auto-generated method stub
-		return null;
+		String s = hentFørste();
+		sletFørste();
+		return s;
 	}
 
 	@Override
 	public void vis() {
-		while (aktuel.næste!=null)
-			System.out.println(hent());
-		tilNæste();
+		
+		while (tom()==false){
+			
+			System.out.println(pop());
+			
+		
+		}
 		// TODO Auto-generated method stub
 		
 	}
