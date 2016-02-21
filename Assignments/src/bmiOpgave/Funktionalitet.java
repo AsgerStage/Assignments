@@ -1,11 +1,11 @@
 package bmiOpgave;
 
 public class Funktionalitet implements IFunktionalitet {
-
-	public Funktionalitet() {
-		// TODO Auto-generated constructor stub
+private IData d;
+	public Funktionalitet(IData Idata) {
+		this.d=Idata;
 	}
-private Data d= new Data();
+
 	@Override
 	public double getBMI(String cpr) {
 		return (d.getVaegt(cpr))/(d.getHoejde(cpr)*d.getHoejde(cpr));
