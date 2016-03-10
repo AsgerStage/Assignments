@@ -3,19 +3,34 @@ package CodeJudge;
 public class sandbox {
 
 	public static void main(String[] args) {
-	Queue sd = new Queue();
-		sd.enqueue(1);
-		sd.enqueue(2);
-		System.out.println(sd.dequeue());
-		System.out.println(sd.dequeue());
-		sd.enqueue(7);
-		System.out.println(sd.dequeue());
-		sd.enqueue(4);
-		System.out.println(sd.dequeue());
+	MaxHeap sd =new MaxHeap();
+
+	sd.insert(-5);
+	sd.insert(-4);
+	sd.insert(-3);
+	sd.insert(-2);
+	sd.insert(-1);
+	sd.insert(0);
+	sd.insert(1);
+	sd.insert(2);
+	sd.insert(3);
+	sd.insert(4);
+	sd.insert(5);
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
+	System.out.println(sd.extractMax());
 	
-		
-		sd.enqueue(5);
-		sd.enqueue(6);
-		sd.enqueue(7);
+	//for(int i=0;i<sd.size;i++)
+	//System.out.println(sd.elements[i]);
+	
+	
 	}
 }
