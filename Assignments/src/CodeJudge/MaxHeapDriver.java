@@ -39,29 +39,38 @@ class MaxHeap {
 
 	private void bubbleDown(int e) {
 		int tmp;
-		
-		if(elements[e*2]>=elements[(e*2)+1]){
-		while(elements[e]<elements[e*2]){
-			
-				tmp=elements[e*2];
-			elements[e*2]=elements[e];
+				
+			if(elements[biggestChild(e)]<elements[e]){
+			tmp=elements[e*2];
+			elements[biggestChild(e)]=elements[e];
 			elements[e]=tmp;
-			e=e*2;
+			e=biggestChild(e);
 			if(e>size)return;
-		}}
-			
-			else if (elements[e*2]<elements[(e*2)+1]){
-			while(elements[e]<elements[(e*2)+1]){
-				tmp=elements[(e*2)+1];
-				elements[(e*2)+1]=elements[e];
+			bubbleDown(e);
+		}
+			else if(elements[smallestChild(e)]<elements[e]){
+				tmp=elements[e*2];
+				elements[smallestChild(e)]=elements[e];
 				elements[e]=tmp;
-				e=(e*2)+1;
+				e=smallestChild(e);
 				if(e>size)return;
-				}
+				bubbleDown(e);
+		
+			}
 			}
 			
-		}
+	
 		
+	public int biggestChild(int e){
+		if(elements[e*2+1]>elements[e*2])
+			return (e*2)+1;
+		else return e*2;
+	}
+	public int smallestChild(int e){
+		if(elements[e*2+1]<elements[e*2])
+			return (e*2)+1;
+		else return e*2;
+	}
 		
 	
 	public int parent(int i){
