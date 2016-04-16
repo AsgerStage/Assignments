@@ -4,82 +4,78 @@ import java.io.*;
 import java.util.*;
 
 class MaxHeap {
-	
-	public int[] elements = new int[10001];
-	 int size = 0;
 
-	
+	public int[] elements = new int[20001];
+	int size = 0;
+
 	public void insert(int e) {
-		size+=1;
-		elements[size]=e;
+		size += 1;
+		elements[size] = e;
 		bubbleUp(size);
 	}
 
 	private void bubbleUp(int e) {
 		int tmp;
 
-		while(elements[e]>elements[parent(e)]){
-			tmp=elements[parent(e)];
-			elements[parent(e)]=elements[e];
-			elements[e]=tmp;
-			e=parent(e);
-			
-			
+		while (elements[e] > elements[parent(e)]) {
+			tmp = elements[parent(e)];
+			elements[parent(e)] = elements[e];
+			elements[e] = tmp;
+			e = parent(e);
+
 		}
 	}
 
 	public int extractMax() {
-		int r=elements[1];
-		elements[1]=elements[size];
-		size-=1;
+		int r = elements[1];
+		elements[1] = elements[size];
+		size -= 1;
 		bubbleDown(1);
 		return r;
-		
+
 	}
 
 	private void bubbleDown(int e) {
 		int tmp;
+		while (elements[leftChild(e)] > elements[e] || elements[rightChild(e)] > elements[e]) 
+		{
+			if (elements[leftChild(e)] > elements[rightChild(e)]) {
+				if(leftChild(e)>size)break;
+				tmp = elements[leftChild(e)];
+				elements[leftChild(e)] = elements[e];
+				elements[e] = tmp;
+				e = leftChild(e);
+				if (e > size)
+					break;
 				
-			if(elements[biggestChild(e)]<elements[e]){
-			tmp=elements[e*2];
-			elements[biggestChild(e)]=elements[e];
-			elements[e]=tmp;
-			e=biggestChild(e);
-			if(e>size)return;
-			bubbleDown(e);
-		}
-			else if(elements[smallestChild(e)]<elements[e]){
-				tmp=elements[e*2];
-				elements[smallestChild(e)]=elements[e];
-				elements[e]=tmp;
-				e=smallestChild(e);
-				if(e>size)return;
-				bubbleDown(e);
-		
-			}
-			}
+			} else if((elements[leftChild(e)] <= elements[rightChild(e)])){
+				if(rightChild(e)>size)break;
+			tmp = elements[rightChild(e)];
+			elements[rightChild(e)] = elements[e];
+			elements[e] = tmp;
+			e = rightChild(e);
+			if (e > size)
+				break;
 			
-	
-		
-	public int biggestChild(int e){
-		if(elements[e*2+1]>elements[e*2])
-			return (e*2)+1;
-		else return e*2;
-	}
-	public int smallestChild(int e){
-		if(elements[e*2+1]<elements[e*2])
-			return (e*2)+1;
-		else return e*2;
-	}
-		
-	
-	public int parent(int i){
-	int r=(int) Math.floor(i/2);
-	if (r<=0)r=1;
-	
-	return r;
+			}
+		}
 	}
 
+	public int rightChild(int e) {
+		return (e * 2) + 1;
+	}
+
+	public int leftChild(int e) {
+		return e * 2;
+	}
+
+	public int parent(int i) {
+		int r = (int) Math.floor(i / 2);
+		if (r <= 0)
+			r = 1;
+
+		return r;
+	}
 
 	// ##################################################
 	// # You do not need to modify anything below here. #
@@ -93,9 +89,7 @@ class MaxHeap {
 	}
 }
 
-
-public class MaxHeapDriver
-{
+public class MaxHeapDriver {
 	public static void main(String[] args) throws IOException {
 		new MaxHeapDriver().run();
 	}
